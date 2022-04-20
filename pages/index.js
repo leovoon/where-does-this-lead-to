@@ -91,7 +91,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Build with Next.js by leovoon. <br />
+          Built with Next.js by leovoon. <br />
           <p>
             Powered by{" "}
             <span>
