@@ -1,0 +1,60 @@
+html,
+body {
+  padding: 1rem;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: grid;
+  place-items: center;
+}
+
+form {
+  width: 80vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin-bottom: 2rem;
+}
+input {
+  grid-column: span 2;
+  padding-block: 1rem;
+  width: 100%;
+  padding-left: 1rem;
+  font-size: large;
+}
+button {
+  padding-block: 1rem;
+  color: white;
+  background-color: lightseagreen;
+  border: none;
+  font-size: large;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover:focus {
+  background-color: darkcyan;
+}
+
+.img-container {
+  max-width: 80vw;
+}
+.img {
+  width: 100%;
+  border: 3px solid lightseagreen;
+}
+
+footer {
+  text-align: center;
+  margin-top: 8em;
+}
