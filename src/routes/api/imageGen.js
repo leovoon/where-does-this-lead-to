@@ -49,10 +49,6 @@ export const post = async ({ request }) => {
 		type: 'png'
 	});
 
-	if (!data || typeof data === 'string') {
-		return { body: null };
-	}
-
 	await browser.close();
 	return {
 		body: data,
