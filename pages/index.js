@@ -40,9 +40,9 @@ export default function Home() {
         alert("Error taking screenshot.")
         setLoading(false)
       } else {
-        const blob = await res.blob()
-        const objectURL = URL.createObjectURL(blob)
-        setImgUrl(objectURL)
+        const buffer = await res.arrayBuffer()
+        const base64 = Buffer.from(buffer).toString("base64")
+        setImgUrl(`data:image/webp;base64, ${base64}`)
         setLoading(false)
       }
     }
