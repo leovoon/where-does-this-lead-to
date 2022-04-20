@@ -53,7 +53,7 @@
 	</div>
 </div>
 
-<footer>Made by <a href="https://github.com/leovoon">leovoon</a></footer>
+<footer>Made by <a href="https://github.com/leovoon/where-does-this-lead-to">leovoon</a></footer>
 
 <style>
 	:global(body) {
