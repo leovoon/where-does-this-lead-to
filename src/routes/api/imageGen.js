@@ -27,23 +27,35 @@ export const post = async ({ request }) => {
 		height: 720,
 		deviceScaleFactor: 1
 	});
+
+	try {
+		await page.goto(url, {
+			timeout: 15 * 1000
+		});
+	} catch (err) {
+		console.log(err);
+		return {
+			status: 500,
+			body: 'Invalid URL',
+			headers: {
+				'Content-Type': 'text/plain'
+			}
+		};
+	}
 	// Generate the full URL out of the given path (GET parameter)
-	await page.goto(url, {
-		timeout: 15 * 1000
-	});
 
 	// Generate image
 	const data = await page.screenshot({
 		type: 'webp'
 	});
 
-	const img = data.toString('base64');
-	await browser.close();
-	// Set the s-maxage property which caches the images then on the Vercel edge
-	return {
-		body: img,
-		// allow headers to be set
+	if (!data || typeof data === 'string') {
+		return { body: null };
+	}
 
+	await browser.close();
+	return {
+		body: data,
 		headers: {
 			's-maxage': '3600',
 			'cache-control': 'public, max-age=3600',
