@@ -42,7 +42,6 @@ export const post = async ({ request }) => {
 			}
 		};
 	}
-	// Generate the full URL out of the given path (GET parameter)
 
 	// Generate image
 	const data = await page.screenshot({
