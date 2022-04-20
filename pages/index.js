@@ -4,7 +4,7 @@ import Image from "next/image"
 import { useState } from "react"
 
 export default function Home() {
-  const [imgUrl, setImgUrl] = useState("")
+  const [imgUrl, setImgUrl] = useState(null)
   const [loading, setLoading] = useState(false)
 
   const isValidHttpUrl = (string) => {
@@ -36,7 +36,7 @@ export default function Home() {
 
       setLoading(true)
 
-      if (res.status === 500) {
+      if (res.status === 500 || res.body === undefined) {
         alert("Error taking screenshot.")
         setLoading(false)
       } else {

@@ -39,6 +39,10 @@ export default async (req, res) => {
   const data = await page.screenshot({
     type: "webp",
   })
+
+  if (data === "undefined") {
+    res.status(500).json({ message: "Error capturing" })
+  }
   await browser.close()
   // Set the s-maxage property which caches the images then on the Vercel edge
   res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate")
