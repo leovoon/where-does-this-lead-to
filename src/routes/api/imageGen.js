@@ -46,7 +46,7 @@ export const post = async ({ request }) => {
 
 	// Generate image
 	const data = await page.screenshot({
-		type: 'webp'
+		type: 'png'
 	});
 
 	if (!data || typeof data === 'string') {
@@ -59,7 +59,7 @@ export const post = async ({ request }) => {
 		headers: {
 			's-maxage': '3600',
 			'cache-control': 'public, max-age=3600',
-			'content-type': 'image/webp'
+			'content-type': 'image/png'
 		}
 	};
 };
