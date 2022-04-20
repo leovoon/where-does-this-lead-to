@@ -7,9 +7,9 @@
 	 */
 	let value = '';
 	/**
-	 * @type {Viewer}
+	 * @type {Promise<string | undefined>}
 	 */
-	let viewer;
+	let promise;
 
 	// check if value is url
 	/**
@@ -27,15 +27,26 @@
 		return url.protocol === 'http:' || url.protocol === 'https:';
 	}
 
-	async function submitUrl() {
-		if (!isValidHttpUrl(value)) alert('Please enter a valid URL');
+	function handleSubmit() {
+		promise = submitUrl();
+	}
 
-		const res = await fetch('/api/imageGen', {
-			method: 'POST',
-			body: JSON.stringify({ url: value })
-		});
-		const data = await res.text();
-		img.src = `data:image/webp;base64,${data}`;
+	async function submitUrl() {
+		if (!isValidHttpUrl(value)) {
+			alert('Please enter a valid URL');
+		} else {
+			const res = await fetch('/api/imageGen', {
+				method: 'POST',
+				body: JSON.stringify({ url: value })
+			});
+			if (res.status === 500) {
+				alert('Error taking screenshot. URL might be invalid.');
+			} else {
+				const blob = await res.blob();
+				const objectURL = URL.createObjectURL(blob);
+				return objectURL;
+			}
+		}
 	}
 
 	let placeholder = 'Enter url here http://...';
@@ -43,14 +54,24 @@
 
 <div class="wrapper">
 	<h1>What does this link lead to?</h1>
-	<form on:submit|preventDefault={submitUrl}>
+	<form on:submit|preventDefault={handleSubmit}>
 		<input type="text" bind:value {placeholder} />
 		<button type="submit">Get Screenshot</button>
 	</form>
 
-	<div id="img-container">
-		<img bind:this={img} alt="screenshot result" src="https://picsum.photos/400/300" />
-	</div>
+	{#await promise}
+		<p>...hold on aah</p>
+	{:then imgUrl}
+		<div id="img-container">
+			<img
+				bind:this={img}
+				src={imgUrl || 'https://picsum.photos/400/300'}
+				alt="screenshot result"
+			/>
+		</div>
+	{:catch error}
+		<p style="color: red">{error.message}</p>
+	{/await}
 </div>
 
 <footer>Made by <a href="https://github.com/leovoon/where-does-this-lead-to">leovoon</a></footer>
@@ -99,6 +120,7 @@
 	}
 	img {
 		width: 100%;
+		border: 3px solid lightseagreen;
 	}
 
 	footer {
