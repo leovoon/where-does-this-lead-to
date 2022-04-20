@@ -5,14 +5,14 @@ specifiers:
   '@sveltejs/kit': next
   chrome-aws-lambda: ^10.1.0
   eslint: ^7.32.0
-  eslint-config-prettier: ^8.3.0
-  eslint-plugin-svelte3: ^3.2.1
-  prettier: ^2.5.1
-  prettier-plugin-svelte: ^2.5.0
-  puppeteer-core: ^10.1.0
-  svelte: ^3.44.0
-  svelte-check: ^2.2.6
-  typescript: ~4.6.2
+  eslint-config-prettier: ^8.5.0
+  eslint-plugin-svelte3: ^3.4.1
+  prettier: ^2.6.2
+  prettier-plugin-svelte: ^2.7.0
+  puppeteer-core: ^10.4.0
+  svelte: ^3.47.0
+  svelte-check: ^2.7.0
+  typescript: ~4.6.3
 
 dependencies:
   chrome-aws-lambda: 10.1.0_puppeteer-core@10.4.0
@@ -226,7 +226,7 @@ packages:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
     engines: {node: '>= 6.0.0'}
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.1
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -441,6 +441,7 @@ packages:
         optional: true
     dependencies:
       ms: 2.1.2
+    dev: true
 
   /deep-is/0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
@@ -848,7 +849,7 @@ packages:
     engines: {node: '>= 10.17.0'}
     hasBin: true
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.1
       get-stream: 5.2.0
       yauzl: 2.10.0
     optionalDependencies:
@@ -1014,7 +1015,7 @@ packages:
     engines: {node: '>= 6'}
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.4
+      debug: 4.3.1
     transitivePeerDependencies:
       - supports-color
     dev: false
