@@ -45,16 +45,17 @@ export const post = async ({ request }) => {
 
 	// Generate image
 	const data = await page.screenshot({
-		type: 'png'
+		type: 'webp'
 	});
 
 	await browser.close();
 	return {
+		// @ts-ignore
 		body: data,
 		headers: {
 			's-maxage': '3600',
 			'cache-control': 'public, max-age=3600',
-			'content-type': 'image/png'
+			'content-type': 'image/webp'
 		}
 	};
 };

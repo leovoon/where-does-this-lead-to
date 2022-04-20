@@ -1,4 +1,6 @@
 <script>
+	import { Buffer } from 'buffer';
+
 	/** @type {HTMLImageElement}
 	 */
 	let img;
@@ -42,9 +44,9 @@
 			if (res.status === 500) {
 				alert('Error taking screenshot. URL might be invalid.');
 			} else {
-				const blob = await res.blob();
-				const objectURL = URL.createObjectURL(blob);
-				return objectURL;
+				const buffer = await res.arrayBuffer();
+				const base64 = Buffer.from(buffer).toString('base64');
+				return `data:image/webp;base64, ${base64}`;
 			}
 		}
 	}
